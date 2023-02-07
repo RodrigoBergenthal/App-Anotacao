@@ -29,7 +29,7 @@ export default function App() {
     
   ]);
 
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
 
 
   let [fontsLoaded] = useFonts({
