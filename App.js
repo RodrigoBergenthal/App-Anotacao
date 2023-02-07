@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import { useFonts, Bangers_400Regular } from '@expo-google-fonts/bangers';
 import AppLoading from 'expo-app-loading';
-import { StyleSheet, Text, View, ImageBackground, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, Text,TextInput, View, ImageBackground, TouchableOpacity, ScrollView, Modal, TouchableHighlight } from 'react-native';
 
 
 export default function App() {
@@ -27,7 +27,9 @@ export default function App() {
 
     },
     
-  ])
+  ]);
+
+  const [modal, setModal] = useState(true);
 
 
   let [fontsLoaded] = useFonts({
@@ -50,7 +52,34 @@ export default function App() {
 
 
   return (
-    <ScrollView style={{ flex: 1 }}>
+
+    <ScrollView style={{flex:1}}>
+      <StatusBar hidden />
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modal}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+          <TextInput autoFocus={true}></TextInput>
+
+            <TouchableHighlight
+              style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
+              onPress={() => {
+                setModal(!modal);
+              }}
+            >
+              <Text style={styles.textStyle}>Adicionar Tarefa</Text>
+            </TouchableHighlight>
+          </View>
+        </View>
+      </Modal>
+
+
       <StatusBar hidden />
       <ImageBackground source={image} style={styles.image}>
         <View style={styles.coverView}>
@@ -70,6 +99,9 @@ export default function App() {
           </View>);
         })
       }
+      <TouchableOpacity style={styles.btnAddTarefa} onPress ={() => setModal(true)}><Text
+      style={{textAlign:'center',color:'white'}}>Adicionar Tarefa</Text></TouchableOpacity>
+
     </ScrollView>
   );
 
@@ -100,6 +132,49 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingBottom: 10,
 
-
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor:'rgba(0,0,0,0.5)'
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    zIndex:5
+  },
+  openButton: {
+    backgroundColor: "#F194FF",
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center"
+  },
+  btnAddTarefa:{
+    width:200,
+    padding:8,
+    backgroundColor:'grey',
+    marginTop:20,
   }
+
 })
