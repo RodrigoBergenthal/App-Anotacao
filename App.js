@@ -14,7 +14,7 @@ export default function App() {
   const [tarefas, setarTarefas] = useState([
     {
       id: 1,
-      tarefa: 'Minha Tarefa 1.'
+      tarefa: 'Minha primeir Tarefa 1.'
     },
     {
       id: 2,
