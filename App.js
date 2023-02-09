@@ -18,7 +18,7 @@ export default function App() {
     },
     {
       id: 2,
-      tarefa: 'Minha outra tarefa...'
+      tarefa: 'Minha segunda tarefa...'
 
     },
     {
