@@ -44,7 +44,7 @@ export default function App() {
 
 
   function deletarTarefa(id) {
-    alert('Tarefa com ID ' + id + ' foi deletada com sucesso!')
+    alert('Tarefa com ID ' + id + ' foi deletada com sucesso!!')
     //TODO: deletar do array/estado a tarefa com id especificado!
 
     let newTarefas = tarefas.filter(function (val) {
